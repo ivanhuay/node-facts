@@ -55,11 +55,11 @@ this section es specially dedicated to mongoose & mongo related fun facts.
 
 ## Mongose: `Find` vs `FindOne`.
 
-Some time ago i made a benchmark between `update`, `find and save`, `findOne & save' & `findOneAndUpdate`. The results was kind obvious but it is interesting to keep in mind.
+Some time ago i made a benchmark between `update`, `find and save`, `findOne & save` & `findOneAndUpdate`. The results was kind obvious but it is interesting to keep in mind.
 
 `update` is only one operation so make sense if `update` is faster than making two operations `find & save` or `findAndUpdate`.
 
-The really interesting thing here is that sometime `find` is faster than making `findOne`.
+The really interesting thing here is that sometimes `find` is faster than making `findOne`.
 
 #### Results
 `save` script makes a separated `find` & `save`, `findOne-save` is similar but using  `findOne`.

@@ -7,11 +7,11 @@ This repo is for education & research. Here you can find some interesting and so
   * [Basic type conversion](#basic-type-conversion)
   * [Null is an object](#null-is-an-object)
 * Performance:
-  * [Console.log is expensive](#console.log-is-expensive)
-  * [process.env isn't that innocent](#process.env-isn't-that-innocent)
+  * [Console.log is expensive](#consolelog-is-expensive)
+  * [process.env isn't that innocent](#processenv-isnt-that-innocent)
 * Mongo Related:
   * Mongoose:
-    * [Find vs FindOne](#find-vs-findOne)
+    * [Find vs FindOne](#find-vs-findone)
 
 ## Starting with javascript
 
@@ -65,7 +65,7 @@ micron test this type of things making a simple loop and measuring times.
 #### Solution:
 Use some loggers writing to a file or you can use `process.stdout.write`
 
-## process.env isn't that innocent
+### process.env isn't that innocent
 Are you using env variables? well there is a bad way and a good way to do that.
 
 When you make a simple `process.env` you are calling a system function so it is expensive too in terms of time.

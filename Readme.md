@@ -1,13 +1,62 @@
 # Some Node.js fun facts
 
-This repos is for education & research.
+This repo is for education & research. Here you can find some interesting and sometimes confusing facts about javascript, node and some commons libraries.
 
+## Content
+* Starting with javascript:
+  * [Basic type conversion](#basic-type-conversion)
+  * [Null is an object](#null-is-an-object)
+* Performance:
+  * [Console.log is expensive](#console.log-is-expensive)
+  * [process.env isn't that innocent](#process.env-isn't-that-innocent)
+* Mongo Related:
+  * Mongoose:
+    * [Find vs FindOne](#find-vs-findOne)
 
-## Console.log is expensive
+## Starting with javascript
+
+### Basic type conversion
+The type conversion at first time is quite fun but there are some things you should keep in mind especially when you need to validate empty parameters.
+
+When you make a simple comparison like the following you are forcing types to convert.
+```javascript
+null != false //true
+undefined != null //false
+```
+
+this is the comparison table:
+
+|equality(==)|null|undefined|false|""|0|NaN|
+|------------|----|---------|-----|--|-|---|
+|null|=|=|≠|≠|≠|≠|
+|defined|=|=|≠|≠|≠|≠|
+|false|≠|≠|=|=|=|≠|
+|""|≠|≠|=|=|=|≠|
+|0|≠|≠|=|=|=|≠|
+|NaN|≠|≠|≠|≠|≠|≠|
+
+actually this is so fun:
+```javascript
+NaN == NaN// false
+```
+
+### Null is an object
+In fact, null is an object unlike undefined that is type undefined.
+
+so when you are validating things keep this in mind:
+
+```javascript
+typeof null// object
+typeof undefined//undefined
+```
+
+## Performance:
+
+### Console.log is expensive
  If you are using `console.log` to keep information logged in production, let me tell you that you are downgrading your performance.
 
 Adding a simple `console.log` add an extra time. The simpler explanation: Node.js is asyncronous so when you add a console.log you are forcing it to make some syncs operations affection your performance.
-#### Data here
+#### Some data about this
 I made some test using [`micron-runner`](https://github.com/ivanhuay/micron-runner) (a benchmark library that i made), you can find the results [here](https://ivanhuay.github.io/micron-runner-example/) and the [repo here](https://github.com/ivanhuay/micron-runner-example)
 
 ![img Alt="image"](./images/test-console.log.png)
@@ -53,7 +102,9 @@ This was a simple example but in real life, you maybe will use a huge .env file 
 # Mongo & mongoose fun facts
 this section es specially dedicated to mongoose & mongo related fun facts.
 
-## Mongose: `Find` vs `FindOne`.
+## Mongoose:
+
+### Find vs FindOne
 
 Some time ago i made a benchmark between `update`, `find and save`, `findOne & save` & `findOneAndUpdate`. The results was kind obvious but it is interesting to keep in mind.
 

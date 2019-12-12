@@ -6,6 +6,7 @@ This repo is for education & research. Here you can find some interesting and so
 * Starting with javascript:
   * [Basic type conversion](#basic-type-conversion)
   * [Null is an object](#null-is-an-object)
+  * [Floating point](#floating-point-precision)
 * Performance:
   * [Console.log is expensive](#consolelog-is-expensive)
   * [process.env isn't that innocent](#processenv-isnt-that-innocent)
@@ -35,11 +36,13 @@ this is the comparison table:
 |0|≠|≠|=|=|=|≠|
 |NaN|≠|≠|≠|≠|≠|≠|
 
-actually this is so fun:
+actually this is so funny:
 ```javascript
 NaN == NaN// false
 ```
-
+```javascript
+typeof NaN // 'number'
+```
 ### Null is an object
 In fact, null is an object unlike undefined that is type undefined.
 
@@ -49,7 +52,18 @@ so when you are validating things keep this in mind:
 typeof null// object
 typeof undefined//undefined
 ```
+### Floating point precision
+This is an important thing to keep in mind.
 
+#### Example:
+```javascript
+0.3 * 3 //0.8999999999999999
+```
+This can cause many problems specially if your are using floating point numbers to handle money.
+
+In javascript every number is really a floating point and because of [IEEE_754](https://en.wikipedia.org/wiki/IEEE_754) there are some rounding errors.
+
+This is a well explained and interesting article about this. [HERE](https://modernweb.com/what-every-javascript-developer-should-know-about-floating-points/)
 ## Performance:
 
 ### Console.log is expensive

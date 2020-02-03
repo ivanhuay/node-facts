@@ -3,10 +3,11 @@
 This repo is for education & research. Here you can find some interesting and sometimes confusing facts about javascript, node and some commons libraries.
 
 ## Content
-* Starting with javascript:
-  * [Basic type conversion](#basic-type-conversion)
+* Basic concepts:
+  * [type conversion](#type-conversion)
   * [Null is an object](#null-is-an-object)
   * [Floating point](#floating-point-precision)
+  * [Copying Objects](#copying-objects)
 * Performance:
   * [Console.log is expensive](#consolelog-is-expensive)
   * [process.env isn't that innocent](#processenv-isnt-that-innocent)
@@ -14,12 +15,13 @@ This repo is for education & research. Here you can find some interesting and so
   * Mongoose:
     * [Find vs FindOne](#find-vs-findone)
 
-## Starting with javascript
+## Basic Concepts
 
-### Basic type conversion
-The type conversion at first time is quite fun but there are some things you should keep in mind especially when you need to validate empty parameters.
+### Type conversion
+On javascript the type conversion could be confusing when you are starting, but there are some things you should keep in mind especially when you need to validate empty parameters.
 
 When you make a simple comparison like the following you are forcing types to convert.
+
 ```javascript
 null != false //true
 undefined != null //false
@@ -64,6 +66,36 @@ This can cause many problems specially if your are using floating point numbers 
 In javascript every number is really a floating point and because of [IEEE_754](https://en.wikipedia.org/wiki/IEEE_754) there are some rounding errors.
 
 This is a well explained and interesting article about this. [HERE](https://modernweb.com/what-every-javascript-developer-should-know-about-floating-points/)
+
+### Copying Objects
+As you may know copying basic types variables in javascript is quite easy.
+
+Example:
+```javascript
+let a = 2;
+let b = a; // done!
+```
+
+But when you try the same way for objects you aren't copying the objects itself, you are copying the reference.
+
+```javascript
+let library = {name:"hiroki", starts:11};
+let anotherLibrary = library;
+anotherLibrary.name = "micron-runner"; //here you are changing also the library variable.
+console.log(library.name); //output: micron-runner
+```
+
+So there some ways to solve this problem:
+* The old way:
+```javascript
+let secondLibrary = Object.assign({},library);
+```
+* Ecma 2018 adds [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+```javascript
+let secondLibrary = {...library};//this copy all properties from library object.
+```
+
+So you have 2 easy solutions for these problems depending on your current ECMA version. Also, you can create your own recursive function to copy objects but this way is easier.
 ## Performance:
 
 ### Console.log is expensive

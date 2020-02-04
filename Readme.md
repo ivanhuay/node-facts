@@ -8,6 +8,7 @@ This repo is for education & research. Here you can find some interesting and so
   * [Null is an object](#null-is-an-object)
   * [Floating point](#floating-point-precision)
   * [Copying Objects](#copying-objects)
+  * [Optional Chaining](#optional-chaining)
 * Performance:
   * [Console.log is expensive](#consolelog-is-expensive)
   * [process.env isn't that innocent](#processenv-isnt-that-innocent)
@@ -108,6 +109,38 @@ So you have 2 easy solutions for these problems depending on your current ECMA v
 let a = [1,2,3];
 let b = [...a];
 ```
+### Optional chaining
+**Optional chaining** also called **Null Propagation Operator** is useful when you want to access one deep value of an object normally you should make an if validating all sub-objects.
+
+*Also, you should know this is an experimental operator but you can use it in some context like react apps.*
+
+```JavaScript
+let name = player.session.main.username;//i need to access this.
+```
+This is the old way to check the values:
+```javascript
+if (
+  player &&
+  player.session &&
+  player.session.main &&
+  player.session.main.username &&
+) {
+  let name = player.session.main.username;
+}
+```
+
+Using Null propagation operator:
+```javascript
+let name = player?.session?.main?.username; //done!
+```
+when some property is `undefined` name will be also undefined.
+
+
+Sources:
+* https://ponyfoo.com/articles/null-propagation-operator
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+* Browser compatibility: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining#Browser_compatibility
+
 ## Performance:
 
 ### Console.log is expensive

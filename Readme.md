@@ -45,6 +45,12 @@ NaN == NaN// false
 ```javascript
 typeof NaN // 'number'
 ```
+
+this is the best meme so far:
+```javascript
+let example = NaN;
+example === example; //false
+```
 ### Null is an object
 In fact, null is an object unlike undefined that is type undefined.
 
@@ -96,6 +102,12 @@ let secondLibrary = {...library};//this copy all properties from library object.
 ```
 
 So you have 2 easy solutions for these problems depending on your current ECMA version. Also, you can create your own recursive function to copy objects but this way is easier.
+
+*Spread operators also works for arrays*
+```javascript
+let a = [1,2,3];
+let b = [...a];
+```
 ## Performance:
 
 ### Console.log is expensive

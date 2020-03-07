@@ -135,11 +135,18 @@ let name = player?.session?.main?.username; //done!
 ```
 when some property is `undefined` name will be also undefined.
 
+#### How to enable Optional chaining?
+you can use this experimental feature using a babel plugin:
+
+```
+yarn add @babel/plugin-proposal-optional-chaining --dev
+```
 
 Sources:
 * https://ponyfoo.com/articles/null-propagation-operator
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
 * Browser compatibility: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining#Browser_compatibility
+
 
 ## Performance:
 
